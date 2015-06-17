@@ -1,4 +1,4 @@
-from django.shortcuts import render, RequestContext
+from django.shortcuts import render, RequestContext,render_to_response
 from pymongo import MongoClient
 
 # Create your views here.
