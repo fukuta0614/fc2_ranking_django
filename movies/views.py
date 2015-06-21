@@ -27,6 +27,7 @@ def home(request):
     page = request.GET.get('page')
     tag = request.GET.get('tag')
     query = request.GET.get('query')
+    sort_type = request.GET.get('sort_type')
     init_mongo('fc2_movie','movies_non_adult')
 
     tags = []
@@ -34,8 +35,11 @@ def home(request):
         tags.extend(movie['tag'])
     tags = Counter(tags).most_common(100)
     five = [-2,-1,0,1,2]
+    if sort_type == None:
+        sort_type = 0
+
     if tag:
-        movies = list(collect.find({'kind':'すべてのユーザー','tag':tag}).sort([('fav',-1)]))
+        movies = list(collect.find({'kind':'すべてのユーザー','tag':tag}).sort([(['fav','playing'][sort_type],-1)]))
     elif query:
         movies = list(collect.find({'kind':'すべてのユーザー','title':re.compile(query)}).sort([('fav',-1)]))
     else:
