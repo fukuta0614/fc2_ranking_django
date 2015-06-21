@@ -37,7 +37,8 @@ def home(request):
     five = [-2,-1,0,1,2]
     if sort_type == None:
         sort_type = 0
-
+    print(sort_type)
+    print(['fav','playing'][sort_type])
     if tag:
         movies = list(collect.find({'kind':'すべてのユーザー','tag':tag}).sort([(['fav','playing'][sort_type],-1)]))
     elif query:
