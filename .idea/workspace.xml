@@ -51,10 +51,12 @@
       <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.49367088" vertical-offset="105" max-vertical-offset="1635">
-              <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="25" selection-end-column="15" />
+            <state vertical-scroll-proportion="0.43037975" vertical-offset="880" max-vertical-offset="1710">
+              <caret line="122" column="12" selection-start-line="122" selection-start-column="12" selection-end-line="122" selection-end-column="12" />
               <folding>
                 <element signature="n#style#0;n#ul#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
+                <element signature="n#nav#0;n#!!top" expanded="false" />
+                <element signature="n#nav#1;n#!!top" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -63,7 +65,7 @@
       <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.625" vertical-offset="540" max-vertical-offset="1215">
+            <state vertical-scroll-proportion="-10.833333" vertical-offset="415" max-vertical-offset="1215">
               <caret line="45" column="44" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="44" />
               <folding>
                 <element signature="n#style#0;n#ul#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -511,6 +513,8 @@
           <caret line="74" column="63" selection-start-line="74" selection-start-column="63" selection-end-line="74" selection-end-column="63" />
           <folding>
             <element signature="n#style#0;n#ul#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#nav#0;n#!!top" expanded="false" />
+            <element signature="n#nav#1;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -568,6 +572,8 @@
           <caret line="74" column="63" selection-start-line="74" selection-start-column="63" selection-end-line="74" selection-end-column="63" />
           <folding>
             <element signature="n#style#0;n#ul#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#nav#0;n#!!top" expanded="false" />
+            <element signature="n#nav#1;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -662,7 +668,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.625" vertical-offset="540" max-vertical-offset="1215">
+        <state vertical-scroll-proportion="-10.833333" vertical-offset="415" max-vertical-offset="1215">
           <caret line="45" column="44" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="44" />
           <folding>
             <element signature="n#style#0;n#ul#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -673,10 +679,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.49367088" vertical-offset="105" max-vertical-offset="1635">
-          <caret line="20" column="4" selection-start-line="20" selection-start-column="4" selection-end-line="25" selection-end-column="15" />
+        <state vertical-scroll-proportion="0.43037975" vertical-offset="880" max-vertical-offset="1710">
+          <caret line="122" column="12" selection-start-line="122" selection-start-column="12" selection-end-line="122" selection-end-column="12" />
           <folding>
             <element signature="n#style#0;n#ul#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
+            <element signature="n#nav#0;n#!!top" expanded="false" />
+            <element signature="n#nav#1;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>

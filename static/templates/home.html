@@ -120,8 +120,8 @@
         </li>
       </ul>
     </nav>
-    {% endif %}
-    <nav>
+    {% else %}
+      <nav>
       <ul class="pagination">
         <li>
             {% if movies.has_previous %}
@@ -148,7 +148,7 @@
         </li>
       </ul>
     </nav>
-
+    {% endif %}
 
 {% endblock %}
 
