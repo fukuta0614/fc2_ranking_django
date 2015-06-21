@@ -29,9 +29,11 @@
       <thead>
         <tr>
             <th>Rank</th>
+            <th>Thumbnail</th>
             <th>Fav</th>
             <th>Title</th>
             <th>Url</th>
+            <th>Playtime</th>
             <th>Download</th>
 
         </tr>
@@ -41,9 +43,11 @@
       {% for movie in movies %}
             <tr>
                 <th scope="row">{{ forloop.counter|add:num }}</th>
+                <td><img src="{{movie.thumbnil}}"/></td>
                 <td>{{ movie.fav }}</td>
                 <td>{{ movie.title}}</td>
                 <td><a href="{{movie.url}}" target="_blank">{{movie.url}}</a></td>
+                <td>{{movie.play_time</td>
                 <td>
                     <form action="{% url 'download' %}" method="get">
                         <input id="submit" type="button" value="Download" name="{{movie|private:'_id'}}"/>
