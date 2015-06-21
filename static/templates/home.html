@@ -43,7 +43,7 @@
       {% for movie in movies %}
             <tr>
                 <th scope="row">{{ forloop.counter|add:num }}</th>
-                <td><img src="{{movie.thumbnil}}"/></td>
+                <td><img src="{{movie.thumbnail}}"></td>
                 <td>{{ movie.fav }}</td>
                 <td>{{ movie.title}}</td>
                 <td><a href="{{movie.url}}" target="_blank">{{movie.url}}</a></td>
