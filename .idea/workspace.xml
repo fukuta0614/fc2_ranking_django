@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cc8f8667-3f86-4c0b-9fb7-67582b34ba94" name="Default" comment="" />
+    <list default="true" id="cc8f8667-3f86-4c0b-9fb7-67582b34ba94" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/static/img/stochastic_robot_manupulation.pdf" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="myapp.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -97,8 +100,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/movies/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30555555" vertical-offset="483" max-vertical-offset="1215">
-              <caret line="41" column="101" selection-start-line="41" selection-start-column="101" selection-end-line="41" selection-end-column="101" />
+            <state vertical-scroll-proportion="0.2013889" vertical-offset="483" max-vertical-offset="1215">
+              <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
               <folding>
                 <element signature="e#27#97#0" expanded="true" />
               </folding>
@@ -748,8 +751,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/movies/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30555555" vertical-offset="483" max-vertical-offset="1215">
-          <caret line="41" column="101" selection-start-line="41" selection-start-column="101" selection-end-line="41" selection-end-column="101" />
+        <state vertical-scroll-proportion="0.2013889" vertical-offset="483" max-vertical-offset="1215">
+          <caret line="38" column="21" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
           <folding>
             <element signature="e#27#97#0" expanded="true" />
           </folding>
