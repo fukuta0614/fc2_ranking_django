@@ -6,7 +6,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from pymongo import MongoClient
 from django import template
 from collections import Counter
-
+import re
 register = template.Library()
 
 @register.filter(name='private')
@@ -26,8 +26,8 @@ def home(request):
     # news = News.objects.all()
     page = request.GET.get('page')
     tag = request.GET.get('tag')
-
-    init_mongo('fc2_movie','movies')
+    query = request.GET.get('query')
+    init_mongo('fc2_movie','movies_non_adult')
 
     tags = []
     for movie in collect.find():
@@ -36,6 +36,8 @@ def home(request):
 
     if tag:
         movies = list(collect.find({'kind':'すべてのユーザー','tag':tag}).sort([('fav',-1)]))
+    elif query:
+        movies = list(collect.find({'kind':'すべてのユーザー','title':re.compile(query)}).sort([('fav',-1)]))
     else:
         movies = list(collect.find({'kind':'すべてのユーザー'}).sort([('fav',-1)]))
     paginator = Paginator(movies, 100) # Show 25 contacts per page
