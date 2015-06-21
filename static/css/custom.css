@@ -6,6 +6,26 @@
 text-align: left;
 }
 
+
 .jumbotron {
   padding: 0 0;
+}
+/* --- コンテナ --- */
+#container {
+margin: 0 auto; /* センタリング */
+background-color: #ffffff; /* メインカラムの背景色 */
+border-left: 1px #c0c0c0 solid; /* 左の境界線 */
+border-right: 1px #c0c0c0 solid; /* 右の境界線 */
+}
+/* --- ナビゲーション --- */
+#nav {
+text_align:left;
+float: left;
+width: 15%; /* サイドバーの幅 */
+}
+
+/* --- メインカラム --- */
+#content {
+float: left;
+width: 85%; /* メインカラムの幅 */
 }

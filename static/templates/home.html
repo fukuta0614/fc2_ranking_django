@@ -3,7 +3,7 @@
 
 {% block content %}
     <div class="container">
-        <h1>movies!</h1>
+        <h1>fc2 movies!</h1>
           <!--<form method="post" action="">-->
               <!--<br/>-->
               <!--{% csrf_token %}-->
@@ -15,37 +15,68 @@
 
       </div>
 {% endblock %}
+{% load private %}
 
 {% block content2 %}
+    {% if tag %}
+        <p>タグ「{{tag}}」の検索結果</p>
+    {% endif %}
+    <table class="table table-striped" id="url_table">
+      <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Fav</th>
+            <th>Title</th>
+            <th>Url</th>
+            <th>Download</th>
 
-        <p><strong>Gigazine</strong></p>
-        <table class="table table-striped" id="url_table">
-          <thead>
+        </tr>
+      </thead>
+      <tbody>
+
+      {% for movie in movies %}
             <tr>
-              <th>#</th>
-              <th>Title</th>
-              <th>Url</th>
-
+                <th scope="row">{{ forloop.counter|add:num }}</th>
+                <td>{{ movie.fav }}</td>
+                <td>{{ movie.title}}</td>
+                <td><a href="{{movie.url}}" target="_blank">{{movie.url}}</a></td>
+                <td>
+                    <form action="{% url 'download' %}" method="get">
+                        <input id="submit" type="button" value="Download" name="{{movie|private:'_id'}}"/>
+                    </form>
+                </td>
             </tr>
-          </thead>
-          <tbody>
-            <!--{% for page in news %}-->
-                <!--<tr>-->
-                    <!--<th scope="row">{{ forloop.counter }}</th>-->
-                    <!--<td>{{ page.base_site}}</td>-->
-                    <!--<td><a href="{{page.url}}" target="_blank">{{page.url}}</a></td>-->
-                <!--</tr>-->
-            <!--{% endfor %}-->
-          {% for movie in movies %}
-                <tr>
-                    <th scope="row">{{ forloop.counter }}</th>
-                    <td>{{ movie.title}}</td>
-                    <td><a href="{{movie.url}}" target="_blank">{{movie.url}}</a></td>
-                </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-          <p>{{ text }}</p>
+        {% endfor %}
+      </tbody>
+    </table>
+    <nav>
+      <ul class="pagination">
+        <li>
+            {% if movies.has_previous %}
+                <a href="?page=1" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            {% else %}
+                <span aria-hidden="true">&laquo;</span>
+            {% endif %}
+        </li>
+        <li><a href="?page={{movies.number|add:-2}}">{{movies.number|add:-2}}</a></li>
+        <li><a href="?page={{movies.number|add:-1}}">{{movies.number|add:-1}}</a></li>
+        <li><a href="#">{{movies.number}}</a></li>
+        <li><a href="?page={{movies.number|add:1}}">{{movies.number|add:1}}</a></li>
+        <li><a href="?page={{movies.number|add:2}}">{{movies.number|add:2}}</a></li>
+        <li>
+            {% if movies.has_next %}
+                <a href="?page={{ movies.paginator.num_pages }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            {% else %}
+                <span aria-hidden="true">&raquo;</span>
+            {% endif %}
+        </li>
+      </ul>
+    </nav>
+
 
 {% endblock %}
 

@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^$', 'movies.views.home', name = 'home'),
+    url(r'^download$', 'movies.views.download', name = 'download'),
     url(r'^admin/', include(admin.site.urls)),
 ]
