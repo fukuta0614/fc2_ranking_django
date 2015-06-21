@@ -64,6 +64,63 @@
         {% endfor %}
       </tbody>
     </table>
+    {% if tag %}
+      <nav>
+      <ul class="pagination">
+        <li>
+            {% if movies.has_previous %}
+                <a href="?tag={{tag}}&page=1" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            {% else %}
+                <span aria-hidden="true">&laquo;</span>
+            {% endif %}
+        </li>
+        {% for i in "xxxxx" %}
+          {% if movies.number|add:forloop.counter0 < movies.paginator.num_pages %}
+            <li><a href="?tag={{tag}}&page={{movies.number|add:forloop.counter0}}">{{movies.number|add:forloop.counter0}}</a></li>
+          {% endif %}
+        {% endfor %}
+        <li>
+            {% if movies.has_next %}
+                <a href="?tag={{tag}}&page={{ movies.paginator.num_pages }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            {% else %}
+                <span aria-hidden="true">&raquo;</span>
+            {% endif %}
+        </li>
+      </ul>
+    </nav>
+    {% elif query %}
+      <nav>
+      <ul class="pagination">
+        <li>
+            {% if movies.has_previous %}
+                <a href="?query={{query}}&page=1" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            {% else %}
+                <span aria-hidden="true">&laquo;</span>
+            {% endif %}
+        </li>
+        {% for i in "xxxxx" %}
+          {% if movies.number|add:forloop.counter0 < movies.paginator.num_pages %}
+            <li><a href="?query={{query}}&page={{movies.number|add:forloop.counter0}}">{{movies.number|add:forloop.counter0}}</a></li>
+          {% endif %}
+        {% endfor %}
+        <li>
+            {% if movies.has_next %}
+                <a href="?query={{query}}&page={{ movies.paginator.num_pages }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            {% else %}
+                <span aria-hidden="true">&raquo;</span>
+            {% endif %}
+        </li>
+      </ul>
+    </nav>
+    {% endif %}
     <nav>
       <ul class="pagination">
         <li>
