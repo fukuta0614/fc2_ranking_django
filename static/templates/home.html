@@ -76,7 +76,7 @@
             {% endif %}
         </li>
         {% for i in five %}
-          {% if {{movies.number|add:i}} > 0 %}
+          {% if movies.number + i > 0 %}
           <!--and {{movies.number|add:i}} < {{movies.paginator.num_pages}} %}-->
             <!--{% if i == 0 %}-->
             <li><a href="?page={{movies.number|add:i}}">{{movies.number|add:i}}</a></li>
