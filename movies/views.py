@@ -34,7 +34,7 @@ def home(request):
         tags.extend(movie['tag'])
     tags = Counter(tags).most_common(100)
     five = list(range(-2,3))
-    a = 1
+    asdfasdf = 1
     if tag:
         movies = list(collect.find({'kind':'すべてのユーザー','tag':tag}).sort([('fav',-1)]))
     elif query:
