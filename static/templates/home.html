@@ -47,7 +47,13 @@
                 <td>{{ movie.playing }}</td>
                 <td>{{ movie.fav }}</td>
                 <td>{{ movie.title}}</td>
-                <td>{{movie.tag}}</td>
+                <td>
+                    <ul style="list-style:none;">
+                        {% for t in movie.tag %}
+                            <li>{{t}}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
                 <td>{{movie.play_time}}</td>
                 <!--<td>-->
                     <!--<form action="{% url 'download' %}" method="get">-->
