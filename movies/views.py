@@ -41,9 +41,9 @@ def home(request):
     if tag:
         movies = list(collect.find({'kind':'すべてのユーザー','tag':tag}).sort([(['fav','playing'][sort_type],-1)]))
     elif query:
-        movies = list(collect.find({'kind':'すべてのユーザー','title':re.compile(query)}).sort([('fav',-1)]))
+        movies = list(collect.find({'kind':'すべてのユーザー','title':re.compile(query)}).sort([(['fav','playing'][sort_type],-1)]))
     else:
-        movies = list(collect.find({'kind':'すべてのユーザー'}).sort([('fav',-1)]))
+        movies = list(collect.find({'kind':'すべてのユーザー'}).sort([(['fav','playing'][sort_type],-1)]))
     paginator = Paginator(movies, 100) # Show 25 contacts per page
 
     print(request.META['HTTP_USER_AGENT'])
