@@ -47,12 +47,12 @@
                 <td>{{ movie.fav }}</td>
                 <td>{{ movie.title}}</td>
                 <td><a href="{{movie.url}}" target="_blank">{{movie.url}}</a></td>
-                <td>{{movie.play_time</td>
-                <td>
-                    <form action="{% url 'download' %}" method="get">
-                        <input id="submit" type="button" value="Download" name="{{movie|private:'_id'}}"/>
-                    </form>
-                </td>
+                <td>{{movie.play_time}}</td>
+                <!--<td>-->
+                    <!--<form action="{% url 'download' %}" method="get">-->
+                        <!--<input id="submit" type="button" value="Download" name="{{movie|private:'_id'}}"/>-->
+                    <!--</form>-->
+                <!--</td>-->
             </tr>
         {% endfor %}
       </tbody>
