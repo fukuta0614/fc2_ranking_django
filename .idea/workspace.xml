@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cc8f8667-3f86-4c0b-9fb7-67582b34ba94" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/templates/home.html" afterPath="$PROJECT_DIR$/static/templates/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/movies/views.py" afterPath="$PROJECT_DIR$/movies/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="myapp.iws" />
@@ -52,8 +53,8 @@
       <file leaf-file-name="home.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/static/templates/home.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.63235295" vertical-offset="522" max-vertical-offset="1635">
-              <caret line="52" column="37" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.9240506" vertical-offset="865" max-vertical-offset="1650">
+              <caret line="82" column="8" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="8" />
               <folding>
                 <element signature="n#style#0;n#ul#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
               </folding>
@@ -97,8 +98,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/movies/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1155">
-              <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="213" max-vertical-offset="1155">
+              <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
               <folding>
                 <element signature="e#27#97#0" expanded="true" />
               </folding>
@@ -119,8 +120,8 @@
         <option value="$PROJECT_DIR$/static/css/custom.css" />
         <option value="$PROJECT_DIR$/myapp/urls.py" />
         <option value="$PROJECT_DIR$/static/templates/base.html" />
-        <option value="$PROJECT_DIR$/movies/views.py" />
         <option value="$PROJECT_DIR$/static/templates/navbar.html" />
+        <option value="$PROJECT_DIR$/movies/views.py" />
         <option value="$PROJECT_DIR$/static/templates/home.html" />
       </list>
     </option>
@@ -627,18 +628,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
-          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/myapp/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1249" max-vertical-offset="1680">
           <caret line="105" column="37" selection-start-line="105" selection-start-column="37" selection-end-line="105" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/movies/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="213" max-vertical-offset="1155">
+          <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
+          <folding>
+            <element signature="e#27#97#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
+          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -648,16 +659,6 @@
         <state vertical-scroll-proportion="-5.625" vertical-offset="0" max-vertical-offset="765">
           <caret line="9" column="63" selection-start-line="9" selection-start-column="63" selection-end-line="9" selection-end-column="63" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/movies/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1155">
-          <caret line="29" column="44" selection-start-line="29" selection-start-column="44" selection-end-line="29" selection-end-column="44" />
-          <folding>
-            <element signature="e#27#97#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -674,8 +675,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.63235295" vertical-offset="522" max-vertical-offset="1635">
-          <caret line="52" column="37" selection-start-line="52" selection-start-column="37" selection-end-line="52" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.9240506" vertical-offset="865" max-vertical-offset="1650">
+          <caret line="82" column="8" selection-start-line="82" selection-start-column="8" selection-end-line="82" selection-end-column="8" />
           <folding>
             <element signature="n#style#0;n#ul#0;n#td#4;n#tr#0;n#tbody#0;n#table#0;n#!!top" expanded="true" />
           </folding>

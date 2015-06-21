@@ -75,11 +75,12 @@
                 <span aria-hidden="true">&laquo;</span>
             {% endif %}
         </li>
-        <li><a href="?page={{movies.number|add:-2}}">{{movies.number|add:-2}}</a></li>
-        <li><a href="?page={{movies.number|add:-1}}">{{movies.number|add:-1}}</a></li>
-        <li><a href="#">{{movies.number}}</a></li>
-        <li><a href="?page={{movies.number|add:1}}">{{movies.number|add:1}}</a></li>
-        <li><a href="?page={{movies.number|add:2}}">{{movies.number|add:2}}</a></li>
+        {% for i in five %}
+          {% if {{movies.number|add:i}} > 0 and {{movies.number|add:i}} < {{movies.paginator.num_pages}} %}
+            <!--{% if i == 0 %}-->
+            <li><a href="?page={{movies.number|add:i}}">{{movies.number|add:i}}</a></li>
+          {% endif %}
+        {% endfor %}
         <li>
             {% if movies.has_next %}
                 <a href="?page={{ movies.paginator.num_pages }}" aria-label="Next">
