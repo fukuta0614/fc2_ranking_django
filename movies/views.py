@@ -35,8 +35,10 @@ def home(request):
         tags.extend(movie['tag'])
     tags = Counter(tags).most_common(100)
     five = [-2,-1,0,1,2]
-    # if sort_type == None:
-    #     sort_type = 0
+    if sort_type == None:
+        sort_type = 0
+    else:
+        sort_type = int(sort_type)
     # print(sort_type)
     # print(['fav','playing'][sort_type])
     if tag:
