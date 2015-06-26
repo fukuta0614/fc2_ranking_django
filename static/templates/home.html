@@ -12,64 +12,25 @@
                   <input class="btn btn-primary btn-lg" type="submit" value="search&raquo;">
               </p>
           </form>
-
+        <input type="text" id="url" size="50" value="http://video.fc2.com/ginfo.php?mimi=0f2cfa4c6998641965f3eedc44f1484b&v=20150225qFpqAs3t&upid=20150225qFpqAs3t&otag=1" /><button onclick="getSource()">ソースを取得</button><br />
+	    <textarea id="source" style="width: 100%;height: 300px;"></textarea>
       </div>
 {% endblock %}
 {% load private %}
+{% load url_add_query %}
 
 {% block content2 %}
     {% if tag %}
-        <p>タグ 「{{tag}}」 の検索結果</p>
+        <p style="text-align:center">タグ 「{{tag}}」 の検索結果</p>
     {% endif %}
     {% if query %}
-        <p>キーワード 「{{query}}」 の検索結果</p>
+        <p style="text-align:center">キーワード 「{{query}}」 の検索結果</p>
     {% endif %}
-
-    <table class="table table-striped" id="url_table">
-      <thead>
-        <tr>
-            <th>Rank</th>
-            <th>Thumbnail</th>
-            <th><a href="?sort_type=1">Playing</a></th>
-            <th><a href="?">Fav</a></th>
-            <th>Title</th>
-            <th>Tags</th>
-            <th>Playtime</th>
-
-        </tr>
-      </thead>
-      <tbody>
-
-      {% for movie in movies %}
-            <tr>
-                <th scope="row">{{ forloop.counter|add:num }}</th>
-                <td><a href="{{movie.url}}" target="_blank"><img src="{{movie.thumbnail}}"></a></td>
-                <td>{{ movie.playing }}</td>
-                <td>{{ movie.fav }}</td>
-                <td>{{ movie.title}}</td>
-                <td>
-                    <ul style="list-style:none;">
-                        {% for t in movie.tag %}
-                            <li>{{t}}</li>
-                        {% endfor %}
-                    </ul>
-                </td>
-                <td>{{movie.play_time}}</td>
-                <!--<td>-->
-                    <!--<form action="{% url 'download' %}" method="get">-->
-                        <!--<input id="submit" type="button" value="Download" name="{{movie|private:'_id'}}"/>-->
-                    <!--</form>-->
-                <!--</td>-->
-            </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-    {% if tag %}
-      <nav>
-      <ul class="pagination">
+    <nav style="text-align:center">
+      <ul class="pagination" style="margin-bottom:5px " >
         <li>
             {% if movies.has_previous %}
-                <a href="?tag={{tag}}&page=1" aria-label="Previous">
+                <a href="{% url_add_query url page=1 &}" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
             {% else %}
@@ -78,12 +39,12 @@
         </li>
         {% for i in "xxxxx" %}
           {% if movies.number|add:forloop.counter0 < movies.paginator.num_pages %}
-            <li><a href="?tag={{tag}}&page={{movies.number|add:forloop.counter0}}">{{movies.number|add:forloop.counter0}}</a></li>
+            <li><a href="{% url_add_query url page=movies.number|add:forloop.counter0 %}">{{movies.number|add:forloop.counter0}}</a></li>
           {% endif %}
         {% endfor %}
         <li>
             {% if movies.has_next %}
-                <a href="?tag={{tag}}&page={{ movies.paginator.num_pages }}" aria-label="Next">
+                <a href="{% url_add_query url page=movies.paginator.num_pages %}" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             {% else %}
@@ -92,63 +53,30 @@
         </li>
       </ul>
     </nav>
-    {% elif query %}
-      <nav>
-      <ul class="pagination">
-        <li>
-            {% if movies.has_previous %}
-                <a href="?query={{query}}&page=1" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            {% else %}
-                <span aria-hidden="true">&laquo;</span>
-            {% endif %}
-        </li>
-        {% for i in "xxxxx" %}
-          {% if movies.number|add:forloop.counter0 < movies.paginator.num_pages %}
-            <li><a href="?query={{query}}&page={{movies.number|add:forloop.counter0}}">{{movies.number|add:forloop.counter0}}</a></li>
-          {% endif %}
+    <div class="row">
+        {% for movie in movies %}
+        <div class="col-sm-3" style="position:relative; height:230px">
+            <strong>{{forloop.counter}}</strong>
+
+            <div class="video_thumb_small" style="position:relative;">
+                <input width="160" height="120" src="{{movie.thumbnail}}" class="submit" type="image" onClick="location.href='{% url 'download'%}?target={{movie|private:'_id'}}'">
+                <span>{{movie.play_time}}</span>
+            </div>
+            <p style="font-size:12px; text-align:center">
+                <a href="{% url_add_query url sort_type=1 %}" class="small_info">再生数</a>: {{movie.playing}}<br/>
+                <a href="?" class="small_info">お気に入り数</a>: {{movie.fav }}
+            </p>
+            <p style="font-size:15px; text-align:center">
+                <a href="{{movie.url}}" target="_blank"><strong>{{ movie.title}}</strong></a><br/><br/>
+            </p>
+        </div>
+
         {% endfor %}
-        <li>
-            {% if movies.has_next %}
-                <a href="?query={{query}}&page={{ movies.paginator.num_pages }}" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            {% else %}
-                <span aria-hidden="true">&raquo;</span>
-            {% endif %}
-        </li>
-      </ul>
-    </nav>
-    {% else %}
-      <nav>
-      <ul class="pagination">
-        <li>
-            {% if movies.has_previous %}
-                <a href="?page=1" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            {% else %}
-                <span aria-hidden="true">&laquo;</span>
-            {% endif %}
-        </li>
-        {% for i in "xxxxx" %}
-          {% if movies.number|add:forloop.counter0 < movies.paginator.num_pages %}
-            <li><a href="?page={{movies.number|add:forloop.counter0}}">{{movies.number|add:forloop.counter0}}</a></li>
-          {% endif %}
-        {% endfor %}
-        <li>
-            {% if movies.has_next %}
-                <a href="?page={{ movies.paginator.num_pages }}" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            {% else %}
-                <span aria-hidden="true">&raquo;</span>
-            {% endif %}
-        </li>
-      </ul>
-    </nav>
-    {% endif %}
+    </div>
+
+
+
+
 
 {% endblock %}
 
