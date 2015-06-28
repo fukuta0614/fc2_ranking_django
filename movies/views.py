@@ -2,7 +2,6 @@
 
 from django.shortcuts import render, RequestContext,render_to_response,redirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from pymongo import MongoClient
 from collections import Counter
 from bs4 import BeautifulSoup
 from movies.models import Movie,Tag
@@ -10,47 +9,25 @@ import re,urllib2
 import cPickle
 from django.http import HttpResponse
 
-def init_mongo(database,collection):
-    connect = MongoClient('localhost', 27017)#, max_pool_size=None)
-    db = connect[database]
-    global collect
-    # collect = db.movie_list
-    collect = db[collection]
-
 def home(request):
-    # news = News.objects.all()
     page = request.GET.get('page')
     tag = request.GET.get('tag')
     query = request.GET.get('query')
     sort_type = request.GET.get('sort_type')
-    # init_mongo('fc2_movie','adult_movies')
 
-    # tags = []
-    # for movie in collect.find():
-    #     tags.extend(movie['tag'])
-    # tags = Counter(tags).most_common(100)
 
     tags = Tag.objects.all()[:100]
 
-    # five = [-2,-1,0,1,2]
     if sort_type == None:
         sort_type = 0
     else:
         sort_type = int(sort_type)
-    # print(sort_type)
-    # print(['fav','playing'][sort_type])
     if tag:
-        # movies = list(collect.find({'kind':'すべてのユーザー','tag':tag,'thumbnail':{'$exists':True}}).sort([(['fav','playing'][sort_type],-1)]))
         movies = Movie.objects.filter(tag__contains=tag)
     elif query:
-        # movies = list(collect.find({'kind':'すべてのユーザー','title':re.compile(query),'thumbnail':{'$exists':True}}).sort([(['fav','playing'][sort_type],-1)]))
         movies = Movie.objects.filter(title__contains=query)
-        print(len(movies))
     else:
         movies = Movie.objects.all()
-        # movies = list(collect.find({'kind':'すべてのユーザー','thumbnail':{'$exists':True}}).sort([(['fav','playing'][sort_type],-1)]))
-    # with open('static/fc2_movies.pickle') as f:
-    #     movies = cPickle.load(f)
     paginator = Paginator(movies, 100) # Show 25 contacts per page
     url = request.get_full_path()
 
@@ -72,10 +49,9 @@ def home(request):
                               context_instance=RequestContext(request))
 
 def download(request):
-    init_mongo('fc2_movie','adult_movies')
     target = request.GET.get('target')
-    ginfo_url=collect.find({'_id':target})[0]['ginfo_url']
-    soup = BeautifulSoup(urllib2.urlopen(ginfo_url,timeout=3).read())
+    ginfo_url=Movie.objects.get(id=target).ginfo_url
+    # soup = BeautifulSoup(urllib2.urlopen(ginfo_url,timeout=3).read())
     soup = BeautifulSoup(urllib2.urlopen(urllib2.Request(url=ginfo_url,data=b'None',headers={'User-Agent':request.META['HTTP_USER_AGENT']})).read())
     # print(soup.string)
     filepath = str(soup).replace(";","").split("&amp")
