@@ -5,6 +5,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from pymongo import MongoClient
 from collections import Counter
 from bs4 import BeautifulSoup
+from movies.models import Movie,Tag
 import re,urllib2
 import cPickle
 from django.http import HttpResponse
@@ -22,14 +23,14 @@ def home(request):
     tag = request.GET.get('tag')
     query = request.GET.get('query')
     sort_type = request.GET.get('sort_type')
-    init_mongo('fc2_movie','adult_movies')
+    # init_mongo('fc2_movie','adult_movies')
 
-    tags = []
-    for movie in collect.find():
-        tags.extend(movie['tag'])
-    tags = Counter(tags).most_common(100)
-    # with open('static/tags.pickle') as f:
-    #     tags = cPickle.load(f)
+    # tags = []
+    # for movie in collect.find():
+    #     tags.extend(movie['tag'])
+    # tags = Counter(tags).most_common(100)
+
+    tags = Tag.objects.all()[:100]
 
     # five = [-2,-1,0,1,2]
     if sort_type == None:
@@ -39,11 +40,15 @@ def home(request):
     # print(sort_type)
     # print(['fav','playing'][sort_type])
     if tag:
-        movies = list(collect.find({'kind':'すべてのユーザー','tag':tag,'thumbnail':{'$exists':True}}).sort([(['fav','playing'][sort_type],-1)]))
+        # movies = list(collect.find({'kind':'すべてのユーザー','tag':tag,'thumbnail':{'$exists':True}}).sort([(['fav','playing'][sort_type],-1)]))
+        movies = Movie.objects.filter(tag__contains=tag)
     elif query:
-        movies = list(collect.find({'kind':'すべてのユーザー','title':re.compile(query),'thumbnail':{'$exists':True}}).sort([(['fav','playing'][sort_type],-1)]))
+        # movies = list(collect.find({'kind':'すべてのユーザー','title':re.compile(query),'thumbnail':{'$exists':True}}).sort([(['fav','playing'][sort_type],-1)]))
+        movies = Movie.objects.filter(title__contains=query)
+        print(len(movies))
     else:
-        movies = list(collect.find({'kind':'すべてのユーザー','thumbnail':{'$exists':True}}).sort([(['fav','playing'][sort_type],-1)]))
+        movies = Movie.objects.all()
+        # movies = list(collect.find({'kind':'すべてのユーザー','thumbnail':{'$exists':True}}).sort([(['fav','playing'][sort_type],-1)]))
     # with open('static/fc2_movies.pickle') as f:
     #     movies = cPickle.load(f)
     paginator = Paginator(movies, 100) # Show 25 contacts per page
