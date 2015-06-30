@@ -14,20 +14,26 @@ def home(request):
     tag = request.GET.get('tag')
     query = request.GET.get('query')
     sort_type = request.GET.get('sort_type')
+    is_adult = request.GET.get('is_adult')
 
-
-    tags = Tag.objects.all()[:100]
-
-    if sort_type == None:
-        sort_type = 0
+    if sort_type == None or sort_type == 0:
+        sort_type = 'fav'
     else:
-        sort_type = int(sort_type)
+        sort_type = 'playing'
+
+    if is_adult is None:
+        is_adult = 0
+    else:
+        is_adult = int(is_adult)
+
+    tags = Tag.objects.filter(is_adult=is_adult).order_by('-num')[:100]
+
     if tag:
-        movies = Movie.objects.filter(tag__contains=tag)
+        movies = Movie.objects.filter(is_adult=is_adult).filter(tag__contains=tag).order_by('-{}'.format(sort_type))
     elif query:
-        movies = Movie.objects.filter(title__contains=query)
+        movies = Movie.objects.filter(is_adult=is_adult).filter(title__contains=query).order_by('-{}'.format(sort_type))
     else:
-        movies = Movie.objects.all()
+        movies = Movie.objects.filter(is_adult=is_adult).order_by('-{}'.format(sort_type))
     paginator = Paginator(movies, 100) # Show 25 contacts per page
     url = request.get_full_path()
 

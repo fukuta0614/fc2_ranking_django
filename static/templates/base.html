@@ -41,6 +41,8 @@
     </head>
 
     <body>
+        {% load private %}
+        {% load url_add_query %}
 
         {% include 'navbar.html' %}
 
@@ -55,7 +57,7 @@
             <div id="nav">
                 <ul style="list-style:none;">
                     {% for tag in tags %}
-                        <li><a href="?tag={{tag.tag}}">{{tag.tag}}({{tag.num}})</a></li>
+                        <li><a href="{% url_add_query url tag=tag.tag %}">{{tag.tag}}({{tag.num}})</a></li>
                     {% endfor %}
                 </ul>
             </div>

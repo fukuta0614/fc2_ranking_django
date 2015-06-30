@@ -31,6 +31,7 @@ class ListField(models.TextField):
 
 class Tag(models.Model):
     tag = models.CharField(max_length=120,primary_key=True)
+    is_adult = models.IntegerField(default=1)
     num = models.IntegerField()
 
 
@@ -44,6 +45,7 @@ class Movie(models.Model):
     thumbnail = models.CharField(max_length=120,default='')
     fav = models.IntegerField()
     playing = models.IntegerField()
+    is_adult = models.IntegerField(default=1)
     tag = models.CharField(max_length=120,default=[])
 
     def __str__(self):

@@ -65,7 +65,7 @@
             </div>
             <p style="font-size:12px; text-align:center">
                 <a href="{% url_add_query url sort_type=1 %}" class="small_info">再生数</a>: {{movie.playing}}<br/>
-                <a href="?" class="small_info">お気に入り数</a>: {{movie.fav }}
+                <a href="{% url_add_query url sort_type=0 %}" class="small_info">お気に入り数</a>: {{movie.fav }}
             </p>
             <p style="font-size:15px; text-align:center">
                 <a href="{{movie.url}}" target="_blank"><strong>{{ movie.title}}</strong></a><br/><br/>
