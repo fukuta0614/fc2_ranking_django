@@ -1,1 +1,3 @@
-*.ignore
+*.sqlite3
+*.pyc
+*.DS_Store
